@@ -74,9 +74,14 @@ const typeDefs = `
     }
 
     type Query {
-        allProjects: [Project!]!
+        project(filter: ProjectFilter): [Project!]!
         allReports: [Report!]!
         allTests: [Test!]!
+    }
+
+    input ProjectFilter {
+        id: ID
+        name: String
     }
 `;
 

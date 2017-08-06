@@ -1,7 +1,22 @@
+const {ObjectID} = require('mongodb');
+
+function buildProjectFilter({id, name}) {
+    const filter = (id || name) ? {} : null;
+    if (id) {
+        filter._id = new ObjectID(id);
+    }
+    if (name) {
+        filter.name = name;
+    }
+
+    return filter ? [filter] : [];
+}
+
 module.exports = {
     Query: {
-        allProjects: async (root, data, {mongo: {Projects}}) => {
-            return await Projects.find({}).toArray();
+        project: async (root, {filter}, {mongo: {Projects}}) => {
+            let query = filter ? {$or: buildProjectFilter(filter)} : {};
+            return await Projects.find(query).toArray();
         },
 
         allReports: async (root, data, {mongo: {Reports}}) => {
