@@ -13,5 +13,6 @@ module.exports = async () => {
 
     return {
         Projects: db.collection('project'),
+        Reports: db.collection('report'),
     };
 }
