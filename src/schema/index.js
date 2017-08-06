@@ -6,6 +6,7 @@ const typeDefs = `
         id: ID!
         name: String!
         reports: [Report!]!
+        tests: [Test!]!
     }
 
     type Report {
@@ -40,11 +41,42 @@ const typeDefs = `
         skipGrandChildLength: Int!
         exceptionsGrandChildLength: Int!
         project: Project!
+        tests: [Test!]!
+    }
+
+    type Test {
+        id: ID!
+        name: String!
+        description: String!
+        status: String!
+        level: Int!
+        startTime: String!
+        endTime: String!
+        childNodesCount: Int!
+        bdd: Boolean!
+        childNodesLength: Int!
+        duration: Int!
+        categorized: Boolean!
+        parent: Test!
+        parentName: String!
+        project: Project!
+        report: Report!
+        exception: Exception
+    }
+
+    type Exception {
+        id: ID!
+        name: String!
+        stacktrace: String!
+        testCount: Int!
+        project: Project!
+        report: Report!
     }
 
     type Query {
         allProjects: [Project!]!
         allReports: [Report!]!
+        allTests: [Test!]!
     }
 `;
 
