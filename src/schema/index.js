@@ -75,13 +75,19 @@ const typeDefs = `
 
     type Query {
         project(filter: ProjectFilter): [Project!]!
-        allReports: [Report!]!
+        allReports(filter: ReportFilter): [Report!]!
         allTests: [Test!]!
     }
 
     input ProjectFilter {
         id: ID
         name: String
+    }
+
+    input ReportFilter {
+        id: ID
+        name: String
+        project: String
     }
 `;
 

@@ -12,6 +12,20 @@ function buildProjectFilter({id, name}) {
     return filter ? [filter] : [];
 }
 
+function buildReportFilter({id, name, project}) {
+    const filter = (id || name || project) ? {} : null;
+    if (id) {
+        filter._id = new ObjectID(id);
+    }
+    if (name) {
+        filter.name = name;
+    }
+    if (project) {
+        filter.project = new ObjectID(project);
+    }
+    return filter ? [filter] : [];
+}
+
 module.exports = {
     Query: {
         project: async (root, {filter}, {mongo: {Projects}}) => {
@@ -19,8 +33,9 @@ module.exports = {
             return await Projects.find(query).toArray();
         },
 
-        allReports: async (root, data, {mongo: {Reports}}) => {
-            return await Reports.find({}).toArray();
+        allReports: async (root, {filter}, {mongo: {Reports}}) => {
+            let query = filter ? {$or: buildReportFilter(filter)} : {};
+            return await Reports.find(query).toArray();
         },
 
         allTests: async (root, data, {mongo: {Tests}}) => {
