@@ -16,18 +16,8 @@
     "mongodb": "^2.2.30",
     "subscriptions-transport-ws": "^0.8.2"
   },
-  "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-transform-regenerator": "^6.24.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "start-server-webpack-plugin": "^2.2.0",
-    "webpack": "^3.4.1",
-    "webpack-node-externals": "^1.6.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "start": "node ./src/index"
   }
 }
