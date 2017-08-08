@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { execute, subscribe } = require('graphql');
 const { createServer } = require('http');
@@ -20,6 +21,8 @@ const start = async () => {
             schema,
         };
     };
+
+    app.use(cors());
     
     app.use('/graphql', bodyParser.json(), graphqlExpress(buildOptions));
 
