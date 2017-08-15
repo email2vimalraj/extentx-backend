@@ -16,13 +16,13 @@ const typeDefs = `
         endTime: String!
         duration: Int!
         parentLength: Int!
-        passParentLength: Int!
-        failParentLength: Int!
-        fatalParentLength: Int!
-        errorParentLength: Int!
-        warningParentLength: Int!
-        skipParentLength: Int!
-        exceptionsParentLength: Int!
+        passParentLength: Int
+        failParentLength: Int
+        fatalParentLength: Int
+        errorParentLength: Int
+        warningParentLength: Int
+        skipParentLength: Int
+        exceptionsParentLength: Int
         childLength: Int!
         passChildLength: Int!
         failChildLength: Int!
